@@ -1,6 +1,6 @@
 # MyStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
+This project is created by udacity student to demonstrate that he inderstands the concepts which were teached in the classroom
 
 ## Development server
 
