@@ -1,0 +1,43 @@
+<div *ngIf="cartItems.length!==0" class="container">
+  <div class="d-flex flex-row">
+    <div class="" style="width:70%;margin-left: 25%;">
+      <app-cart-item *ngFor="let item of cartItems" [cartItem]="item" (totalChanged)="editTotal()"></app-cart-item>
+      <br>
+      <div><b>Total: {{total}}$</b></div>
+    </div>
+    <div class="mt-5" style="width:70%;margin-right: 10%;">
+      <form #form="ngForm">
+        <div>
+        <label >Full name</label>
+          <input type="text" name="fullname" class="form-control"  style ="width:'350px'" placeholder="(minimum 3 characters)" required minlength="3" [(ngModel)]="fullname" #formFullname="ngModel">
+          <div  *ngIf="formFullname.invalid && formFullname.dirty">
+            <div *ngIf="formFullname.errors?.['required']" class="text-danger">the full name field is required</div>
+            <div *ngIf="formFullname.errors?.['minlength']" class="text-danger">the fullname must be at least 3 characters</div>
+          </div>
+        </div>
+        <div>
+          <label >Address</label>
+          <input type="text" name="address" class="form-control" style ="width:'350px'" placeholder="(minimum 6 characters)"required minlength="6" [(ngModel)]="address" #formAdress="ngModel">
+          <div  *ngIf="formAdress.invalid && formAdress.dirty">
+            <div *ngIf="formAdress.errors?.['required']" class="text-danger">the address field is required</div>
+            <div *ngIf="formAdress.errors?.['minlength']" class="text-danger">the address must be at least 6 characters</div>
+          </div>
+        </div>
+        <div>
+          <label >Credit card number</label>
+          <input type="text" name="creditCard" class="form-control" style ="width:'350px'" placeholder="(16-digit number)"required minlength="16" maxlength="16" [(ngModel)]="creditCard" #formCreditCard="ngModel">
+          <div  *ngIf="formCreditCard.invalid && formCreditCard.dirty">
+            <div *ngIf="formCreditCard.errors?.['required']" class="text-danger">the credit card details field is required</div>
+            <div *ngIf="formCreditCard.errors?.['minlength']" class="text-danger">the credit card details must be 16 characters</div>
+          </div>
+        </div>
+        <small>We'll never share your payement details with anyone else</small><br>
+        <button [disabled]="form.invalid" class="btn btn-primary mt-2" (click)="confirmeOrder()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="cartItems.length===0" class="container my-4  text-center">
+  <h1>Your cart is Empty</h1>
+  <p>Please Add products to it</p>
+</div>

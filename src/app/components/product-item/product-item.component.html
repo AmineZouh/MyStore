@@ -1,0 +1,18 @@
+<div class="card m-5 text-center">
+  <a [routerLink]="['/product', product.id]"><img [src]="product.url" [alt]="product.name" width="200px" height="200px"></a>
+  <p>{{product.name}}</p>
+  <p>{{product.price}}</p>
+  <select name="quantity" [(ngModel)]="quantity" class="form-controle mx-auto" style="width: 110px;">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select><br>
+  <button class="btn btn-primary mx-auto mb-1" (click)="addToCart(product, quantity)" style="width: 110px;">Add to cart</button>
+</div>
