@@ -3,6 +3,10 @@
 this mini app is a sort of e-commerce app which enable users purchase product by choosing the quantity they want and add the product to teh cart after that.and finally confirme the order and provide the necessary information like the credit card number.
 The user can edit the quantity at any time before confirming the order, as well as to remove an item from the cart. He can also so the details of product by clicking on it.
 
+# launching the app
+
+to launch the app first run the command `npm i` to get all the necessary dependecies, after that run the commande ` ng serve ` the port used is `4200` so it should be availaballe
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
