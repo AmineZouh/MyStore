@@ -12,19 +12,23 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem:CartItem = new CartItem();
   quantity:number = this.cartItem.quantity
   @Output() totalChanged:EventEmitter<number> = new EventEmitter()
+  @Output() itemRemoved:EventEmitter<CartItem> = new EventEmitter<CartItem>()
 
   ngOnInit(): void {
-      console.log('the quantity is : ', this.cartItem.quantity)
       this.quantity = this.cartItem.quantity
   }
 
   constructor(private cartService:CartService){}
 
-  editTotal(cartItem:CartItem){
-    console.log('edit total function invoked successfully')
-    cartItem.quantity = this.quantity
-    this.cartService.editTotal(cartItem)
+  editTotal(quantity:number){
+    console.log('the new quantity after changes : ', quantity)
+    this.cartItem.quantity = quantity
+    this.cartService.editTotal(this.cartItem)
     this.totalChanged.emit()
+  }
+
+  removeItem(cartItem:CartItem){
+    this.itemRemoved.emit(cartItem)
   }
 
 

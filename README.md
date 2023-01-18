@@ -1,6 +1,7 @@
 # MyStore
 
-This project is created by udacity student to demonstrate that he inderstands the concepts which were teached in the classroom
+this mini app is a sort of e-commerce app which enable users purchase product by choosing the quantity they want and add the product to teh cart after that.and finally confirme the order and provide the necessary information like the credit card number.
+The user can edit the quantity at any time before confirming the order, as well as to remove an item from the cart. He can also so the details of product by clicking on it.
 
 ## Development server
 

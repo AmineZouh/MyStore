@@ -1,7 +1,7 @@
 <div *ngIf="cartItems.length!==0" class="container">
   <div class="d-flex flex-row">
     <div class="" style="width:70%;margin-left: 25%;">
-      <app-cart-item *ngFor="let item of cartItems" [cartItem]="item" (totalChanged)="editTotal()"></app-cart-item>
+      <app-cart-item *ngFor="let item of cartItems" [cartItem]="item" (totalChanged)="editTotal()" (itemRemoved)="removeItem($event)"></app-cart-item>
       <br>
       <div><b>Total: {{total}}$</b></div>
     </div>
@@ -25,10 +25,11 @@
         </div>
         <div>
           <label >Credit card number</label>
-          <input type="text" name="creditCard" class="form-control" style ="width:'350px'" placeholder="(16-digit number)"required minlength="16" maxlength="16" [(ngModel)]="creditCard" #formCreditCard="ngModel">
+          <input type="text" name="creditCard" class="form-control" style ="width:'350px'" placeholder="(16-digit number)"required minlength="16" maxlength="16" pattern="^[0-9]*$" [(ngModel)]="creditCard" #formCreditCard="ngModel">
           <div  *ngIf="formCreditCard.invalid && formCreditCard.dirty">
             <div *ngIf="formCreditCard.errors?.['required']" class="text-danger">the credit card details field is required</div>
             <div *ngIf="formCreditCard.errors?.['minlength']" class="text-danger">the credit card details must be 16 characters</div>
+            <div *ngIf="formCreditCard.errors?.['pattern']" class="text-danger">the credit card details must contains just numbers</div>
           </div>
         </div>
         <small>We'll never share your payement details with anyone else</small><br>

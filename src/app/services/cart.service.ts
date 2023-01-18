@@ -20,7 +20,17 @@ export class CartService {
   addCartItem(cartItem:CartItem):void{
     this.counter++
     cartItem.id = this.counter
-    this.cartItems.push(cartItem)
+    const check = this.cartItems.filter(i=>i.product.id===cartItem.product.id)[0]
+    if(check){
+      this.cartItems = this.cartItems.map(i=>{
+        if(i.product.id===cartItem.product.id){
+          i.quantity += cartItem.quantity
+        }
+        return i
+      })
+    }else{
+      this.cartItems.push(cartItem)
+    }
     this.total += cartItem.product.price*cartItem.quantity
   }
 
@@ -39,13 +49,16 @@ export class CartService {
       }
       return c
     })
-    console.log('the total before edit is : ', this.total)
     this.total = this.calculateTotal(this.cartItems)
-    console.log('the total after edit is : ', this.total)
   }
 
   getTotal():number{
     return this.total
+  }
+
+  removeItem(cartItem:CartItem){
+    this.cartItems = this.cartItems.filter(i=>i.id!==cartItem.id)
+    this.total -= cartItem.product.price*cartItem.quantity
   }
 
 }

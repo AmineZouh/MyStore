@@ -43,5 +43,11 @@ export class CartComponent implements OnInit {
     this.router.navigate(['order']);
   }
 
+  removeItem(cartItem:CartItem){
+    this.cartService.removeItem(cartItem)
+    this.cartItems = this.cartService.getCartItems()
+    this.total = this.cartService.getTotal()
+  }
+
 
 }
